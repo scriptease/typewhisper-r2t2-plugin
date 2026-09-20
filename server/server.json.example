@@ -8,7 +8,7 @@
     {
       "id": "r2t2",
       "family": "confucius4_r2t2",
-      "path": "/Users/florian/github/audio.cpp/models/Confucius4-R2T2-GGUF/r2t2-q8_0.gguf",
+      "path": "/path/to/audio.cpp/models/Confucius4-R2T2-GGUF/r2t2-q8_0.gguf",
       "task": "asr",
       "mode": "streaming",
       "session_options": { "confucius4_r2t2.chunk_size_ms": "320" }
