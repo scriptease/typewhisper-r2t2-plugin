@@ -1,0 +1,17 @@
+{
+  "host": "127.0.0.1",
+  "port": 8488,
+  "backend": "metal",
+  "lazy_load": true,
+  "idle_unload_ms": 1800000,
+  "models": [
+    {
+      "id": "r2t2",
+      "family": "confucius4_r2t2",
+      "path": "/Users/florian/github/audio.cpp/models/Confucius4-R2T2-GGUF/r2t2-q8_0.gguf",
+      "task": "asr",
+      "mode": "streaming",
+      "session_options": { "confucius4_r2t2.chunk_size_ms": "320" }
+    }
+  ]
+}
