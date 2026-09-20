@@ -35,10 +35,12 @@ ln "$(readlink -f ~/.cache/huggingface/hub/models--davidxifeng--Confucius4-R2T2-
    models/Confucius4-R2T2-GGUF/r2t2-q8_0.gguf
 ```
 
-Then copy `server/server.json.example` to `server/server.json`, point `path` at that GGUF, and run:
+Copy `server/server.json.example` to `server/server.json` and point `path` at that GGUF.
+`start.sh` runs the `audiocpp_server` sitting next to it (as shipped in the release archive);
+name your own build with `AUDIOCPP_SERVER`:
 
 ```sh
-server/start.sh          # override the binary with AUDIOCPP_SERVER=/path/to/audiocpp_server
+AUDIOCPP_SERVER=/path/to/audio.cpp/build/macos-metal-release/bin/audiocpp_server server/start.sh
 ```
 
 Smoke test:
@@ -51,7 +53,16 @@ curl -N -X POST -H 'Expect:' -H 'Transfer-Encoding: chunked' -T /tmp/s.pcm \
 
 ## Plugin
 
-Build against a `typewhisper-mac` checkout:
+Prebuilt `R2T2Plugin.bundle` and a server archive are attached to each
+[release](https://github.com/scriptease/typewhisper-r2t2-plugin/releases). Both are ad-hoc signed,
+not notarized, so clear the quarantine flag after unzipping:
+
+```sh
+xattr -dr com.apple.quarantine R2T2Plugin.bundle
+cp -R R2T2Plugin.bundle ~/Library/Application\ Support/TypeWhisper/Plugins/
+```
+
+To build it yourself against a `typewhisper-mac` checkout:
 
 ```sh
 git clone https://github.com/TypeWhisper/typewhisper-mac
