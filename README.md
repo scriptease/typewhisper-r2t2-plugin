@@ -29,11 +29,12 @@ Pick a GGUF:
 
 | Quant | File | Size | Source | Loads in |
 |---|---|---|---|---|
-| Q8_0 (recommended) | `r2t2-q8_0.gguf` | 2.5 GB | [davidxifeng/Confucius4-R2T2-gguf](https://huggingface.co/davidxifeng/Confucius4-R2T2-gguf) | stock audio.cpp, release 0.1.0 and 0.2.0 |
-| F16 | `r2t2-f16.gguf` | 4.1 GB | [davidxifeng/Confucius4-R2T2-gguf](https://huggingface.co/davidxifeng/Confucius4-R2T2-gguf) | stock audio.cpp, release 0.1.0 and 0.2.0 |
-| Q4_K_M | `r2t2-q4_k_m.gguf` | 1.2 GB | [Nairod785/Confucius4-R2T2-Q4_K_M-GGUF](https://huggingface.co/Nairod785/Confucius4-R2T2-Q4_K_M-GGUF) | none yet; needs audio.cpp to accept K-quant weights, see [audio.cpp#678](https://github.com/0xShug0/audio.cpp/issues/678) |
+| Q8_0 (recommended) | `r2t2-q8_0.gguf` | 2.5 GB | [davidxifeng/Confucius4-R2T2-gguf](https://huggingface.co/davidxifeng/Confucius4-R2T2-gguf) | stock audio.cpp, releases 0.1.0 to 0.2.1 |
+| F16 | `r2t2-f16.gguf` | 4.1 GB | [davidxifeng/Confucius4-R2T2-gguf](https://huggingface.co/davidxifeng/Confucius4-R2T2-gguf) | stock audio.cpp, releases 0.1.0 to 0.2.1 |
+| Q4_K_M | `r2t2-q4_k_m.gguf` | 1.2 GB | [Nairod785/Confucius4-R2T2-Q4_K_M-GGUF](https://huggingface.co/Nairod785/Confucius4-R2T2-Q4_K_M-GGUF) | release 0.2.1; stock audio.cpp does not accept K-quant weights yet, see [audio.cpp#678](https://github.com/0xShug0/audio.cpp/issues/678) |
 
-Q4_K_M is a mixed quant, not plain Q4_K. With the one-line weight-check change from #678, its
+Q4_K_M is a mixed quant, not plain Q4_K. With the one-line weight-check change from #678, which
+the 0.2.1 server includes, its
 streaming transcripts matched Q8_0 on a 14 s and a 60 s English clip, apart from two British
 spellings, and the 60 s clip streamed in 26 s instead of 39 s on an M-series Mac. Stock builds
 refuse it with `R2T2 ASR supports f32/f16/bf16/q8_0 weights, but tensor ... is q4_k`.
